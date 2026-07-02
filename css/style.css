@@ -1,0 +1,28 @@
+/* ***************************************************************
+* Autor............: Heverton dos Santos Borges
+* Matricula........: 202511495
+* Inicio...........: 02/07/2026
+* Ultima alteracao.: 02/07/2026
+* Nome.............: style.css
+* Funcao...........: Definir as propriedades visuais dos componentes da interface.
+*************************************************************** */
+
+.background-image {
+  -fx-background-size: 100% 100%;
+  -fx-background-color: transparent;
+}
+
+.home-view {
+  -fx-background-image: url("../assets/backgrounds/home-background.png");
+}
+
+.start-button {
+  -fx-background-image: url("../assets/ui/start-button.png");
+
+  -fx-pref-width: 655;
+  -fx-pref-height: 123;
+}
+
+.start-button:hover {
+  -fx-effect: dropshadow(three-pass-box, rgba(0, 74.9, 85.1, 0.4), 10, 0, 10, 10);
+}
