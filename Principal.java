@@ -14,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import controller.HomeViewController;
+import controller.MainViewController;
 
 @SuppressWarnings("unused")
 public class Principal extends Application {
