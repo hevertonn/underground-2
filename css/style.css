@@ -26,3 +26,59 @@
 .start-button:hover {
   -fx-effect: dropshadow(three-pass-box, rgba(0, 74.9, 85.1, 0.4), 10, 0, 10, 10);
 }
+
+.map-background {
+  -fx-background-image: url("../assets/backgrounds/map-background.png");
+}
+
+.control-panel {
+  -fx-background-image: url("../assets/backgrounds/control-panel.png");
+  -fx-pref-width: 500;
+}
+
+.control-button {
+  -fx-pref-width: 50;
+  -fx-pref-height: 50;
+}
+
+.control-button:hover {
+  -fx-effect: dropshadow(three-pass-box, rgba(10.6, 65.5, 98.4, 0.8), 10, 0, 5, 5);
+}
+
+.show-route {
+  -fx-background-image: url("../assets/ui/route-button.png");
+}
+
+#pause-button {
+  -fx-background-image: url("../assets/ui/pause-button.png");
+}
+
+#play-button {
+  -fx-background-image: url("../assets/ui/play-button.png");
+}
+
+.slider {
+  -fx-min-width: 200;
+  -fx-max-width: 200;
+}
+
+.slider .thumb {
+  -fx-background-size: 100% 100%;
+  -fx-background-color: transparent;
+  -fx-background-image: url("../assets/ui/slider-thumb.png");
+
+  -fx-pref-width: 50;
+  -fx-pref-height: 25;
+}
+
+.slider:hover .thumb {
+  -fx-effect: dropshadow(three-pass-box, rgba(68.6, 16.1, 71.4, 0.8), 10, 0, 10, 10);
+}
+
+.slider .track {
+  -fx-background-size: 100% 100%;
+  -fx-background-color: transparent;
+  -fx-background-image: url("../assets/ui/slider-track.png");
+
+  -fx-pref-height: 20;
+}
