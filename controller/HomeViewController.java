@@ -14,17 +14,31 @@ import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
+import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Screen;
 
 public class HomeViewController {
   @FXML
   private void handleStartButton(ActionEvent event) throws IOException {
     Parent mainView = FXMLLoader.load(getClass().getResource("../view/MainView.fxml"));
+    Group group = new Group(mainView);
+
+    StackPane container = new StackPane(group);
+    container.getStyleClass().add("container");
+
+    Rectangle2D screen = Screen.getPrimary().getVisualBounds();
+    double scale = Math.min(screen.getWidth() / 1920, screen.getHeight() / 1080);
+
+    group.setScaleX(scale);
+    group.setScaleY(scale);
 
     Scene scene = ((Button) event.getSource()).getScene();
 
-    scene.setRoot(mainView);
+    scene.setRoot(container);
   }
 }

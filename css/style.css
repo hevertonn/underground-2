@@ -7,6 +7,10 @@
 * Funcao...........: Definir as propriedades visuais dos componentes da interface.
 *************************************************************** */
 
+.container {
+  -fx-background-color: black;
+}
+
 .background-image {
   -fx-background-size: 100% 100%;
   -fx-background-color: transparent;
@@ -29,6 +33,12 @@
 
 .map-background {
   -fx-background-image: url("../assets/backgrounds/map-background.png");
+}
+
+.route-polygon {
+    -fx-stroke: rgba(12.2, 51.8, 85.5, 0.8);
+    -fx-stroke-width: 5.0;
+    -fx-effect: dropshadow(three-pass-box, rgba(12.2, 51.8, 85.5, 0.4), 20, 0, 0, 0);
 }
 
 .control-panel {
