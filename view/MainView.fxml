@@ -35,6 +35,46 @@
        <Polygon fill="TRANSPARENT" points="584.9989624023438, 45.00179672241211, 844.0, 45.00179672241211, 844.0, 430.83447265625, 1369.99755859375, 430.83447265625, 1369.99755859375, 628.3341064453125, 850.8318481445312, 628.3341064453125, 850.8318481445312, 1024.166748046875, 584.9989624023438, 1024.166748046875, 584.9989624023438, 628.3341064453125, 59.16652297973633, 628.3341064453125, 59.16652297973633, 430.83447265625, 584.9989624023438, 430.83447265625" styleClass="route-polygon" visible="false" />
 
        <Polygon fill="TRANSPARENT" points="51.16655731201172, 235.00001525878906, 581.1100463867188, 235.00001525878906, 581.1100463867188, 46.390682220458984, 844.0, 46.390682220458984, 844.0, 235.00001525878906, 1372.99755859375, 235.00001525878906, 1372.99755859375, 827.5004272460938, 848.331787109375, 827.5004272460938, 848.331787109375, 1023.8334350585938, 586.332275390625, 1023.8334350585938, 586.332275390625, 823.3338012695312, 51.16655731201172, 823.3338012695312" styleClass="route-polygon" visible="false" />
+            <ImageView fitWidth="45.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" styleClass="vehicle" userData="0">
+               <image>
+                  <Image url="@../assets/vehicles/0.png" />
+               </image>
+            </ImageView>
+            <ImageView fitWidth="45.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" styleClass="vehicle" userData="1">
+               <image>
+                  <Image url="@../assets/vehicles/1.png" />
+               </image>
+            </ImageView>
+            <ImageView fitWidth="45.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" styleClass="vehicle" userData="2">
+               <image>
+                  <Image url="@../assets/vehicles/2.png" />
+               </image>
+            </ImageView>
+            <ImageView fitWidth="45.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" styleClass="vehicle" userData="3">
+               <image>
+                  <Image url="@../assets/vehicles/3.png" />
+               </image>
+            </ImageView>
+            <ImageView fitWidth="45.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" styleClass="vehicle" userData="4">
+               <image>
+                  <Image url="@../assets/vehicles/4.png" />
+               </image>
+            </ImageView>
+            <ImageView fitWidth="45.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" styleClass="vehicle" userData="5">
+               <image>
+                  <Image url="@../assets/vehicles/5.png" />
+               </image>
+            </ImageView>
+            <ImageView fitWidth="45.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" styleClass="vehicle" userData="6">
+               <image>
+                  <Image url="@../assets/vehicles/6.png" />
+               </image>
+            </ImageView>
+            <ImageView fitWidth="45.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" styleClass="vehicle" userData="7">
+               <image>
+                  <Image url="@../assets/vehicles/7.png" />
+               </image>
+            </ImageView>
             <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleResetButton">
                <styleClass>
                   <String fx:value="background-image" />
