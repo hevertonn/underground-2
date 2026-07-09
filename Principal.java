@@ -2,20 +2,21 @@
 * Autor............: Heverton dos Santos Borges
 * Matricula........: 202511495
 * Inicio...........: 02/07/2026
-* Ultima alteracao.: 02/07/2026
+* Ultima alteracao.: 08/07/2026
 * Nome.............: Principal.java
 * Funcao...........: Iniciar a aplicacao e configurar a interface JavaFX.
 *************************************************************** */
 
+import java.io.IOException;
+
 import javafx.application.Application;
+import javafx.beans.binding.Bindings;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.StackPane;
-import javafx.stage.Screen;
+import javafx.scene.transform.Scale;
 import javafx.stage.Stage;
 
 import controller.HomeViewController;
@@ -28,27 +29,29 @@ public class Principal extends Application {
   }
 
   @Override
-  public void start(Stage primaryStage) throws Exception {
+  public void start(Stage primaryStage) throws IOException {
     Parent homeView = FXMLLoader.load(getClass().getResource("view/HomeView.fxml"));
     Group group = new Group(homeView);
+    StackPane root = new StackPane(group);
 
-    StackPane container = new StackPane(group);
-    container.getStyleClass().add("container");
+    root.getStyleClass().add("container");
 
-    Rectangle2D screen = Screen.getPrimary().getVisualBounds();
-    double scale = Math.min(screen.getWidth() / 1920, screen.getHeight() / 1080);
+    Scene scene = new Scene(root);
 
-    group.setScaleX(scale);
-    group.setScaleY(scale);
-
-    Scene scene = new Scene(container, screen.getWidth(), screen.getHeight());
     scene.getStylesheets().add("css/style.css");
 
-    primaryStage.setTitle("Underground 2");
+    Scale scale = new Scale();
 
-    primaryStage.setFullScreen(true);
-    primaryStage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
+    scale.xProperty().bind(Bindings.min(
+        scene.widthProperty().divide(1920),
+        scene.heightProperty().divide(1080)));
+    scale.yProperty().bind(scale.xProperty());
+
+    homeView.getTransforms().add(scale);
+
+    primaryStage.setTitle("Underground 2");
     primaryStage.setScene(scene);
+    primaryStage.setMaximized(true);
     primaryStage.show();
   }
 }
