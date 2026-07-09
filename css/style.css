@@ -2,7 +2,7 @@
 * Autor............: Heverton dos Santos Borges
 * Matricula........: 202511495
 * Inicio...........: 02/07/2026
-* Ultima alteracao.: 02/07/2026
+* Ultima alteracao.: 09/07/2026
 * Nome.............: style.css
 * Funcao...........: Definir as propriedades visuais dos componentes da interface.
 *************************************************************** */
@@ -33,6 +33,17 @@
 
 .map-background {
   -fx-background-image: url("../assets/backgrounds/map-background.png");
+}
+
+.reset-button {
+  -fx-background-image: url("../assets/ui/reset-button.png");
+
+  -fx-pref-width: 168;
+  -fx-pref-height: 48;
+}
+
+.reset-button:hover {
+  -fx-effect: dropshadow(three-pass-box, rgba(99.2, 1.2, 2.0, 0.4), 10, 0, 10, 10);
 }
 
 .route-polygon {
