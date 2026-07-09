@@ -2,7 +2,7 @@
 * Autor............: Heverton dos Santos Borges
 * Matricula........: 202511495
 * Inicio...........: 03/07/2026
-* Ultima alteracao.: 08/07/2026
+* Ultima alteracao.: 09/07/2026
 * Nome.............: MainViewController.java
 * Funcao...........: Definir o comportamento da tela principal.
 *************************************************************** */
@@ -21,7 +21,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.transform.Scale;
 
@@ -31,10 +30,34 @@ public class MainViewController {
 
   @FXML
   private void initialize() {
-    Pane map = (Pane) root.lookup("#map");
+    Set<Node> vehicles = root.lookupAll(".vehicles");
     Set<Node> polygons = root.lookupAll(".route-polygon");
     Set<Node> buttons = root.lookupAll(".control-button");
     Set<Node> sliders = root.lookupAll(".slider");
+
+    setShowRouteButtonHandlers(buttons, polygons);
+  }
+
+  private void setShowRouteButtonHandlers(Set<Node> buttons, Set<Node> polygons) {
+    for (Node buttonNode : buttons) {
+      if (buttonNode.getUserData().toString().startsWith("sr")) {
+        Button button = (Button) buttonNode;
+
+        for (Node polygonNode : polygons) {
+          if (polygonNode.getUserData().toString()
+              .endsWith(button.getUserData().toString()
+                  .substring(2))) {
+            button.setOnMousePressed(event -> {
+              polygonNode.setVisible(true);
+            });
+
+            button.setOnMouseReleased(event -> {
+              polygonNode.setVisible(false);
+            });
+          }
+        }
+      }
+    }
   }
 
   @FXML
