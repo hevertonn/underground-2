@@ -21,6 +21,9 @@ public class Vehicle extends Thread {
 
   private double rotate;
 
+  private boolean running = true;
+  private Semaphore pause = new Semaphore(0);
+
   public Vehicle(ArrayList<Point> route, double speed) {
     this.route = route;
     this.speed = speed;
@@ -48,7 +51,12 @@ public class Vehicle extends Thread {
         x = previousPoint.getCoordinates()[0] + vector[0] * i;
         y = previousPoint.getCoordinates()[1] + vector[1] * i;
 
+        if (running) {
+          pause.release();
+        }
+
         try {
+          pause.acquire();
           Thread.sleep(10);
         } catch (InterruptedException ie) {
           return;
@@ -85,5 +93,17 @@ public class Vehicle extends Thread {
 
   public void setSpeed(double speed) {
     this.speed = speed;
+  }
+
+  public void toggleRunning() {
+    if (running) {
+      running = false;
+    } else {
+      running = true;
+
+      if (pause.hasQueuedThreads()) {
+        pause.release();
+      }
+    }
   }
 }
