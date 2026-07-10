@@ -10,6 +10,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Set;
 
 import javafx.beans.binding.Bindings;
@@ -21,29 +22,55 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Slider;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.transform.Scale;
+import model.TrafficControl;
+import model.Vehicle;
 
 public class MainViewController {
   @FXML
   private Parent root;
+  private ArrayList<Vehicle> vehicles = new ArrayList<>();
+  private Animation animation;
 
   @FXML
   private void initialize() {
-    Set<Node> vehicles = root.lookupAll(".vehicles");
-    Set<Node> polygons = root.lookupAll(".route-polygon");
-    Set<Node> buttons = root.lookupAll(".control-button");
-    Set<Node> sliders = root.lookupAll(".slider");
+    Set<Node> vehiclesNodes = root.lookupAll(".vehicle");
+    Set<Node> polygonsNodes = root.lookupAll(".route-polygon");
+    Set<Node> buttonsNodes = root.lookupAll(".control-button");
+    Set<Node> slidersNodes = root.lookupAll(".slider");
 
-    setShowRouteButtonHandlers(buttons, polygons);
+    for (Node vehicleNode : vehiclesNodes) {
+      ImageView vehicleView = (ImageView) vehicleNode;
+
+      vehicleView.setTranslateX(-vehicleView.getBoundsInLocal().getWidth() / 2);
+      vehicleView.setTranslateY(-vehicleView.getBoundsInLocal().getHeight() / 2);
+    }
+
+    TrafficControl trafficControl = new TrafficControl(polygonsNodes);
+
+    for (int i = 0; i < vehiclesNodes.size(); i++) {
+      vehicles.add(i, new Vehicle(trafficControl.getRoute(i), 5));
+      vehicles.get(i).setDaemon(true);
+      vehicles.get(i).start();
+    }
+
+    animation = new Animation(vehiclesNodes, vehicles);
+    animation.start();
+
+    setShowRouteButtonsHandlers(buttonsNodes, polygonsNodes);
+    setPlayPauseButtonsHandlers(buttonsNodes, vehicles);
+    setSpeedSlidersHandlers(slidersNodes, vehicles);
   }
 
-  private void setShowRouteButtonHandlers(Set<Node> buttons, Set<Node> polygons) {
-    for (Node buttonNode : buttons) {
+  private void setShowRouteButtonsHandlers(Set<Node> buttonsNodes, Set<Node> polygonsNodes) {
+    for (Node buttonNode : buttonsNodes) {
       if (buttonNode.getUserData().toString().startsWith("sr")) {
         Button button = (Button) buttonNode;
 
-        for (Node polygonNode : polygons) {
+        for (Node polygonNode : polygonsNodes) {
           if (polygonNode.getUserData().toString()
               .endsWith(button.getUserData().toString()
                   .substring(2))) {
@@ -60,6 +87,34 @@ public class MainViewController {
     }
   }
 
+  private void setPlayPauseButtonsHandlers(Set<Node> buttonsNodes, ArrayList<Vehicle> vehicles) {
+    for (Node buttonNode : buttonsNodes) {
+      if (buttonNode.getUserData().toString().startsWith("pp")) {
+        Button button = (Button) buttonNode;
+
+        button.setOnAction(event -> {
+          if (button.getId().equals("pause-button")) {
+            button.setId("play-button");
+          } else {
+            button.setId("pause-button");
+          }
+
+          vehicles.get(Integer.parseInt(button.getUserData().toString().substring(2))).toggleRunning();
+        });
+      }
+    }
+  }
+
+  private void setSpeedSlidersHandlers(Set<Node> slidersNodes, ArrayList<Vehicle> vehicles) {
+    for (Node sliderNode : slidersNodes) {
+      Slider slider = (Slider) sliderNode;
+
+      slider.valueProperty().addListener((observable, oldValue, newValue) -> {
+        vehicles.get(Integer.parseInt(slider.getUserData().toString())).setSpeed(newValue.doubleValue());
+      });
+    }
+  }
+
   @FXML
   private void handleResetButton(ActionEvent event) throws IOException {
     Parent homeView = FXMLLoader.load(getClass().getResource("../view/HomeView.fxml"));
@@ -69,6 +124,12 @@ public class MainViewController {
     root.getStyleClass().add("container");
 
     Scene scene = ((Button) event.getSource()).getScene();
+
+    animation.stop();
+
+    for (Vehicle vehicle : vehicles) {
+      vehicle.interrupt();
+    }
 
     scene.setRoot(root);
 

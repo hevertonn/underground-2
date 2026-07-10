@@ -112,7 +112,7 @@
                         <String fx:value="background-image" />
                         <String fx:value="control-button" />
                      </styleClass></Button>
-                  <Slider userData="0" />
+                  <Slider max="10.0" min="1.0" userData="0" value="5.0" />
                </children>
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -137,7 +137,7 @@
                         <String fx:value="background-image" />
                         <String fx:value="control-button" />
                      </styleClass></Button>
-                  <Slider userData="1" />
+                  <Slider max="10.0" min="1.0" userData="1" value="5.0" />
                </children>
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -162,7 +162,7 @@
                         <String fx:value="background-image" />
                         <String fx:value="control-button" />
                      </styleClass></Button>
-                  <Slider userData="2" />
+                  <Slider max="10.0" min="1.0" userData="2" value="5.0" />
                </children>
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -187,7 +187,7 @@
                         <String fx:value="background-image" />
                         <String fx:value="control-button" />
                      </styleClass></Button>
-                  <Slider userData="3" />
+                  <Slider max="10.0" min="1.0" userData="3" value="5.0" />
                </children>
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -212,7 +212,7 @@
                         <String fx:value="background-image" />
                         <String fx:value="control-button" />
                      </styleClass></Button>
-                  <Slider userData="4" />
+                  <Slider max="10.0" min="1.0" userData="4" value="5.0" />
                </children>
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -237,7 +237,7 @@
                         <String fx:value="background-image" />
                         <String fx:value="control-button" />
                      </styleClass></Button>
-                  <Slider userData="5" />
+                  <Slider max="10.0" min="1.0" userData="5" value="5.0" />
                </children>
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -262,7 +262,7 @@
                         <String fx:value="background-image" />
                         <String fx:value="control-button" />
                      </styleClass></Button>
-                  <Slider userData="6" />
+                  <Slider max="10.0" min="1.0" userData="6" value="5.0" />
                </children>
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -287,7 +287,7 @@
                         <String fx:value="background-image" />
                         <String fx:value="control-button" />
                      </styleClass></Button>
-                  <Slider userData="7" />
+                  <Slider max="10.0" min="1.0" userData="7" value="5.0" />
                </children>
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
