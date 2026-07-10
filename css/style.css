@@ -38,7 +38,7 @@
 .reset-button {
   -fx-background-image: url("../assets/ui/reset-button.png");
 
-  -fx-pref-width: 168;
+  -fx-pref-width: 275;
   -fx-pref-height: 48;
 }
 
