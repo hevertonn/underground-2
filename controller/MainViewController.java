@@ -57,12 +57,12 @@ public class MainViewController {
       vehicles.get(i).start();
     }
 
-    animation = new Animation(vehiclesNodes, vehicles);
-    animation.start();
-
     setShowRouteButtonsHandlers(buttonsNodes, polygonsNodes);
     setPlayPauseButtonsHandlers(buttonsNodes, vehicles);
     setSpeedSlidersHandlers(slidersNodes, vehicles);
+
+    animation = new Animation(vehiclesNodes, vehicles);
+    animation.start();
   }
 
   private void setShowRouteButtonsHandlers(Set<Node> buttonsNodes, Set<Node> polygonsNodes) {
