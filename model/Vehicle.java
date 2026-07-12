@@ -2,7 +2,7 @@
 * Autor............: Heverton dos Santos Borges
 * Matricula........: 202511495
 * Inicio...........: 02/07/2026
-* Ultima alteracao.: 10/07/2026
+* Ultima alteracao.: 12/07/2026
 * Nome.............: Vehicle.java
 * Funcao...........: Controlar os veiculos da simulacao.
 *************************************************************** */
@@ -14,7 +14,10 @@ import java.util.concurrent.Semaphore;
 
 public class Vehicle extends Thread {
   private ArrayList<Point> route;
+
   private double speed;
+  private double magnitude;
+  private double step;
 
   private double x;
   private double y;
@@ -43,9 +46,9 @@ public class Vehicle extends Thread {
 
       rotate = Math.toDegrees(Math.atan2(-vector[0], vector[1]));
 
-      double magnitude = Math.sqrt(Math.pow(vector[0], 2) + Math.pow(vector[1], 2));
+      magnitude = Math.sqrt(Math.pow(vector[0], 2) + Math.pow(vector[1], 2));
 
-      double step = speed / magnitude;
+      step = speed / magnitude;
 
       for (double i = 0; i < 1; i += step) {
         x = previousPoint.getCoordinates()[0] + vector[0] * i;
@@ -57,7 +60,7 @@ public class Vehicle extends Thread {
 
         try {
           pause.acquire();
-          Thread.sleep(10);
+          Thread.sleep(1000 / 60);
         } catch (InterruptedException ie) {
           return;
         }
@@ -93,6 +96,8 @@ public class Vehicle extends Thread {
 
   public void setSpeed(double speed) {
     this.speed = speed;
+
+    step = speed / magnitude;
   }
 
   public void toggleRunning() {
