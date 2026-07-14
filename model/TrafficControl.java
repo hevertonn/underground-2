@@ -55,7 +55,7 @@ public class TrafficControl {
       Semaphore semaphore = semaphores.getOrDefault(properties.getProperty(key), new Semaphore(1));
       semaphores.putIfAbsent(properties.getProperty(key), semaphore);
 
-      if (key.equals("default")) {
+      if (key.startsWith("default")) {
         semaphore.tryAcquire();
         continue;
       }
